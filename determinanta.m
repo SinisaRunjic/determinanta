@@ -1,14 +1,13 @@
-function  a  = determinanta( A )
+function  a  = determinanta( matrix, matrixColumn )
 %   Function to calculate determinant of matrix
 %   Calclate determinant via recursion (Far from optimal solution)
-    [~, col] = size(A);
     a = 0;
-    if col>1
-        for i = 1:col
-            a = a + (-1)^(1+i)*A(1,i)*determinanta(A(2:end,[1:i-1 i+1:end]));
+    if matrixColumn>1
+        for i = 1:matrixColumn
+            a = a + (-1)^(1+i)*matrix(1,i)*determinanta(matrix(2:end,[1:i-1 i+1:end]), matrixColumn - 1);
         end
     else
-        a = A(1,1);
+        a = matrix(1,1);
     end
 end
 
